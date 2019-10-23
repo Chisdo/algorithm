@@ -69,7 +69,17 @@ O(nlogk) when n >> k, the time complexity is O(n). Find k smallest numbers in a 
 
 12. max_wis.py
 O(n)
-Maximum Weighted Independent Set: independent set is a set where no two numbers are neighbors in the original list.
+Maximum Weighted Independent Set: independent set is a set where no two numbers are neighbors in the original list. 
+wis(n) = max (wis(n-2)+lst[n], wis(n-1)), and two dummy 0 in front of the list as base case. 
 
+13. num_bsts.py
+O(n^2)
+Output the number of possible isomeric binary trees under the given number of nodes n. For n=k, fixing the root, then the first possible structure of left is (dic[0]=1), while right is (dic[k-1]), add to the final result of multiplication of left and right. Then calculate when the number of left node is 1 (dic[1]=1), while right is (dic[k-2]), add to the final result of multiplication of left and right. Get the total summation of when the results when the number of left nodes from 0 to k-1. Return dic[k].
+
+14. num_bits.py
+O(n)
+Number of bit strings of length n that has
+a. no two consecutive 0s.
+b. two consecutive 0s.
 
 
