@@ -1,5 +1,4 @@
 # algorithm
-ALL descriptions of algorithms are from Prof. Huang's algorithm class projects in OSU in 2018, all implementations are coded by Jiaxin Li. 
 ./main.py:          shows a few running time results of algorithms
 ./alg/xxx.py:       implementations of algorithms
 ./alg/pdf/xxx.pdf:  detailed descriptions of algorithms
