@@ -65,7 +65,7 @@ c. A USED set, a HEAP and a result LIST. Fisrt add the (0,0) position element to
 11. k_smallest.py
 O(nlogk) when n >> k, the time complexity is O(n). Find k smallest numbers in a data stream (k << n). Keep a k-length heap. Reverse the sign for finding the biggest number in the k-length small heap. 
 
-*** DP 1 ***
+*** DP 1. Simple ***
 
 12. max_wis.py
 O(n)
@@ -81,5 +81,25 @@ O(n)
 Number of bit strings of length n that has
 a. no two consecutive 0s.
 b. two consecutive 0s.
+The sub-problem is quite similar to Fibonacci sequence. Just the problem are not same. 
+
+*** DP 2. Knapsack ***
+
+15. unbounded.py
+O(nW)
+Given total weight W and a list of serveral different knapsacks (length is n). Each knapsack has a (weight, value). The problem is to find the maximal value under the given W. Unbounded means ANY knapsacks can be chosen anytimes. The fisrt subproblem is what is the maximal value of each weight (from 1 to W). The second subproblem is what is the  value of choosing each knapsack at each weight. 
+
+16. bounded.py
+The different between bounded and unbounded knapsack problem is there is number of limitation of choosing each knapsacks (w_i, v_i, c_i). 
+
+17. 01.py (unfinished)
+The different between 01 and unbounded knapsack problem is each knapsack only can be chosen at most ONCE.
+
+17. lis.py
+
+
+
+
+
 
 
