@@ -1,7 +1,7 @@
 # algorithm
-./main.py:          shows a few running time results of algorithms
-./alg/xxx.py:       implementations of algorithms
-./alg/pdf/xxx.pdf:  detailed descriptions of algorithms
+\n./main.py:          shows a few running time results of algorithms
+\n./alg/xxx.py:       implementations of algorithms
+\n./alg/pdf/xxx.pdf:  detailed descriptions of algorithms
 
 *** CHAPTER ONE: quick sort, BST, quick select ***
 
