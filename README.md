@@ -60,12 +60,14 @@ b. Instead of sorting the whole Cartesian results, find the n smallest pairs as 
 O(nlogn)
 c. A USED set, a HEAP and a result LIST. Fisrt add the (0,0) position element to the heap. Then pop the smallest element from the heap. Add result to the list and used set. Then add (x+1,y) and (x,y+1) elements to the heap. Repeat the loop until the length of list reach the requirment. 
 
-10. k_way_mergesort.py (unfinished)
+10. k_way_mergesort.py 
+O(nlogk)
+The first difficulty is uncertain parameters for merging progress. The second difficulty is the merging progress. For the first difficulty, it can be solved with star symbol(* Parameters). Then we can use merge method from heapq package for solving the second difficulty.
 
 11. k_smallest.py
 O(nlogk) when n >> k, the time complexity is O(n). Find k smallest numbers in a data stream (k << n). Keep a k-length heap. Reverse the sign for finding the biggest number in the k-length small heap. 
 
-*** DP 1. Simple ***
+*** CHAPTER FIVE: DP 1. Simple ***
 
 12. max_wis.py
 O(n)
@@ -83,21 +85,56 @@ a. no two consecutive 0s.
 b. two consecutive 0s.
 The sub-problem is quite similar to Fibonacci sequence. Just the problem are not same. 
 
-*** DP 2. Knapsack ***
+*** CHAPTER SIX: DP 2. Knapsack ***
 
 15. unbounded.py
 O(nW)
 Given total weight W and a list of serveral different knapsacks (length is n). Each knapsack has a (weight, value). The problem is to find the maximal value under the given W. Unbounded means ANY knapsacks can be chosen anytimes. The fisrt subproblem is what is the maximal value of each weight (from 1 to W). The second subproblem is what is the  value of choosing each knapsack at each weight. 
 
-16. bounded.py
-The different between bounded and unbounded knapsack problem is there is number of limitation of choosing each knapsacks (w_i, v_i, c_i). 
+16. bounded.py (can be done with a better backtrack)
+O(nW'), ' denotes to average count times
+The different between bounded and unbounded knapsack problem is there is number of limitation of choosing each knapsacks (w_i, v_i, c_i). The time complexity is O(wn'), w is the total weight, n is the number of bags, ' denotes to the time of counting each number of the same bag under the same weight. The memory should memorize [(weight, # of bag)] for non-repeatly counting using each bag. There are three loops. First, iteratively increase the number of weight. Second, iteratively increase the number of bag. (These two steps as similar as unbounded knapsack problem. ) Last, iteratively increase the times of using same bag. Because we are alwasy choosing the result from last row (i-1) where we doesn't use any currents bag at current row (i). And we exhaustedly counting all possiblites of current bag (from 0 to c_i). Thus, we won't use the bag over the number of it. Hence, the space complexity is O(wn).
 
-17. 01.py (unfinished)
-The different between 01 and unbounded knapsack problem is each knapsack only can be chosen at most ONCE.
+17. 01.py 
+O(nW)
+The different between 01 and bounded knapsack problem is each knapsack only can be chosen at most ONCE. 01 knapsack could be treated as a special case of bounded knapsack when the count of each item is 1. 
 
-17. lis.py
+*** CHAPTER SEVEN: DP 3. Graph Algorithm ***
 
+18. lis.py
+O(n^2)
+The problem of the longest increasing sequence(lis). Assume a string sequence (e.g.'zadbc'), the longest increasing sequence is 'abc'. From the perspective of bottom-up, the outter loop (opt[i]) is increasing the length of sequence. The inner sequence (opt[j]) is searching the relationship between each previous sub-sequence and the new element. If the last character of previous sub-sequence less than new element and the lis of previous sequence (opt[j]) + the length of new element (1) is longer than current length (opt[i]). So,
+if string[j] < string[i] and opt[j] + 1 > opt[i]: then update current choice.
 
+19. topological.py
+O(V+E)
+Tranfer a direct graph to a topological order. Push 0 in degree into a FIFO queue. Pop one elem from FIFO queue and add to order and substract degree of connected nodes. At the end, if there would be some nodes left, then there must be a cycle in the graph. Ortherwise, return the order.
+
+20. viterbi.py
+O(VE)
+This algorithm can solve all similar longest DAG problem (LIS, TSP, knapsacks, MIS). In this problem, it outputs (l,p) where l is the length of the longest path and p denots the path. First, add a dummy sink node. Then with following the increasing topological order (as well as the weight in knapsack problem), using exsited previous nodes to update current nodes. This algorithm is a general solution to any longest problem. 
+
+*** CHAPTER EIGHT: DP 4. Graph Algorithm 2 ***
+
+21. dijkstra.py
+O((V+E)logV)    
+In this problem, is to find the shortest path from source(0) to sink node(n-1). The requirment of using dijkstra is non-negative path in the graph. The key of solving it is applying heap queue. First push the source node into the heap, then pop it and heap push its connected nodes into heap with their weights. As long as popping the sink node, then the algorithm would return optimal path length. Otherwise, there won't be solution due to the unreachable sink node. 
+
+22. tsp.py (unfinished)
+O(2^n) - Exausted method consume O(n!) -
+
+*** CHAPTER NINE: DP 5. RNA structure prediction ***
+A-U, C-G, U-G
+e.g. ACAGU is a RNA sequence. 
+a. best (s): Get the maximal number of pairs is (2, '((.))'). 
+b. total (s): Get the number of possible structures (6). 
+c. kbest (s, k): Get the k-best structures from 1-th to k-th best. 
+Solution:
+a. O(n^3)
+Using three loops. The first loop is an increased moving "ruler". The second loop move the ruler from leftmost to rightmost. Last the innermost loop search the relationship between the first element and the rest elements and update the BEST memorization. 
+b. O(n^3)
+Similar to a. The difference between a. and b. is using sum to replace max operation. Besides, the base case is also slightly different (both of them depend on their own meaning). 
+c. (unfinished)
 
 
 

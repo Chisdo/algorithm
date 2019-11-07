@@ -7,10 +7,11 @@ def unbounded(w, lst):
     backtrack = {}
     dic[0] = 0
     backtrack[0] = -1
+    n = len(lst)
     for i in range(1, w+1):
         dic[i] = dic[i-1]
         backtrack[i] = -1
-        for j in range(len(lst)):
+        for j in range(n):
             w_j,v_j = lst[j]
             if i >= w_j:
                 temp = dic[i-w_j]+v_j
